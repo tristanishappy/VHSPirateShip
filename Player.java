@@ -22,4 +22,13 @@ public class Player {
 		return "This player is named " + name + ".";
 	}
 	
+	public String where()
+	{
+		return current.toString();
+	}
+	
+	public Location getLocation()
+	{
+		return current;
+	}
 }
