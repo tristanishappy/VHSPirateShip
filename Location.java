@@ -4,10 +4,12 @@ public class Location
    private String name;
    private HashMap<Location, Integer> relatedNodes;
    private int info;
+   private boolean ship;
    
    public Location(String name)
    {
 	   this.name = name;
+	   ship = false;
 	   relatedNodes = new HashMap<Location, Integer>();
    }
    
@@ -15,6 +17,7 @@ public class Location
    {
 	   this.name = name;
 	   this.info = info;
+	   ship = false;
 	   relatedNodes = new HashMap<Location, Integer>();
    }
    
@@ -56,6 +59,13 @@ public class Location
    public boolean equals(Location other)
    {
 	   return this.name == other.name && this.info == other.info && this.relatedNodes == other.relatedNodes;
+   }
+   
+   //Boolean to tell if the location is occupied by the player.
+   public boolean occupied()
+   {
+   	if(ship == true)
+   		return true;
    }
    
    public String toString()
