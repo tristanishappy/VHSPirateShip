@@ -17,7 +17,7 @@ public class Route
   public int safty; //How likely you are to make it through unharmed, 0 means safest 100 means not traversable.
   public String description; //Description of the route, ex:  description + " to " + <name of island> + " it seams " + safty + " safe."
   
-  public Route(String name; Location at, Location to, double safe, String description) //I think there should be one route from a to be and another from b to a because the safty depends on which way currents are going, and descriptons would look different
+  public Route(String name; Location at; Location to; double safe; String description) //I think there should be one route from a to be and another from b to a because the safty depends on which way currents are going, and descriptons would look different
   {
     this.name = name;
     this.at = at;
