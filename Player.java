@@ -3,12 +3,13 @@
 public class Player {
 
 	private String name;
-	private Location current;
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	private String mood;
+	private double height;
+	private String hairColor;
+	private String eyeColor;
 
-	}
+	private Location current;
+	private double health = 100.00;
 	
 	public Player(String name) {
 		this.name  = name;
@@ -18,8 +19,13 @@ public class Player {
 		this.current = next;
 	}
 	
+	public void changeHealth(double change)
+	{
+		health+=change;
+	}
+	
 	public String toString() {
-		return "This player is named " + name + ".";
+		return "This player is named " + name+ ".";
 	}
 	
 	public String where()
