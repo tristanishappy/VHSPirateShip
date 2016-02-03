@@ -63,6 +63,7 @@ public class Structure {
 			current.removeEdge(node);
 		}
 		nodes.remove(node);
+		nvertices--;
 	}
 	
 	public void removeEdge(Location x, Location y)
