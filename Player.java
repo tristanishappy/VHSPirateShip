@@ -4,6 +4,7 @@ public class Player {
 
 	private String name;
 	private int moral = 10;
+	private String mood;
 	private double height;
 	private String hairColor;
 	private String eyeColor;
@@ -31,8 +32,6 @@ public class Player {
 				+ ", current=" + current + ", health=" + health + "]";
 	}
 	
-<<<<<<< HEAD
-=======
 	public String where()
 	{
 		return current.toString();
@@ -65,5 +64,4 @@ public class Player {
 			x--;
 		}
 	}
->>>>>>> origin/Player
 }
