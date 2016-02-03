@@ -12,18 +12,40 @@ public class Route
   
   //Will Compass directions be relevent in this game?
   private String name;
-  private Location at; //Location where you can see the route to
+  private double distance; //Location where you can see the route to
   private Location to; // the place where you can or can't go
   public int safty; //How likely you are to make it through unharmed, 0 means safest 100 means not traversable.
   public String description; //Description of the route, ex:  description + " to " + <name of island> + " it seams " + safty + " safe."
   
-  public Route(String name; Location at; Location to; double safe; String description) //I think there should be one route from a to be and another from b to a because the safty depends on which way currents are going, and descriptons would look different
+  public Route(Location to)
   {
-    this.name = name;
-    this.at = at;
+	  this.distance = 1;
+	  this.to = to;
+	  this.safty = 0;
+	  this.description = "quite chill";
+  }
+  public Route(Location to, double distance)
+  {
+	  this.distance = distance;
+	  this.to = to;
+	  this.safty = 0;
+	  this.description = "quite chill";
+  }
+  public Route(Location to, double distance, int safe, String description) //I think there should be one route from a to be and another from b to a because the safty depends on which way currents are going, and descriptons would look different
+  {
+    this.distance = distance;
     this.to = to;
     this.safty = safe;
     this.description = description;
+  }
+  
+  public Location getTo()
+  {
+	  return to;
+  }
+  public double getDistance()
+  {
+	  return distance;
   }
   
   //we need a random class for ship damages and pirate attacks while traveling as well as a few other nesesitys for shipDamage()
@@ -49,10 +71,17 @@ public class Route
   
   public String toString()
   {
-    String routeString = "The route from " + at + " to " + to + "/n"
+	String dis = distance + " units";
+	if (distance == 1)
+	{
+	dis = distance + " unit";
+	}
+	
+    String routeString = "The route from here to " + to + "/n"
                           + " is " + description + "/n" +
                           "Traveling this route has a " + safty + "% /n" 
-                          + "chance to turn out badly!";
+                          + "chance to turn out badly!" + " the destination /n"
+                          + "is around " + dis + " away.";
     return routeString;
   }
   
