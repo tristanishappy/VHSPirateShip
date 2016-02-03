@@ -43,13 +43,21 @@ public class Player {
 		this.moral = moral;
 	}
 	
-	public void upMoral()
+	public void upMoral(int x)
 	{
-		moral++;
+		while (moral < 10 && x > 0)
+		{
+			moral++;
+			x--;
+		}
 	}
 	
-	public void downMoral()
+	public void downMoral(int x)
 	{
-		moral--;
+		while (moral > 0 && x > 0)
+		{
+			moral--;
+			x--;
+		}
 	}
 }
