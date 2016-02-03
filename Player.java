@@ -23,18 +23,12 @@ public class Player {
 	{
 		health+=change;
 	}
-	
+
+	@Override
 	public String toString() {
-		return "This player is named " + name+ ".";
+		return "Player [name=" + name + ", mood=" + mood + ", height=" + height
+				+ ", hairColor=" + hairColor + ", eyeColor=" + eyeColor
+				+ ", current=" + current + ", health=" + health + "]";
 	}
 	
-	public String where()
-	{
-		return current.toString();
-	}
-	
-	public Location getLocation()
-	{
-		return current;
-	}
 }
