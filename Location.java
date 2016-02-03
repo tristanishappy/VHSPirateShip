@@ -3,34 +3,42 @@ public class Location
 {
    private String name;
    private HashMap<Location, Integer> relatedNodes;
-   private int info;
+   private int num;
    
-   public Location(String name)
+   public Location(String name, int num)
    {
 	   this.name = name;
-	   relatedNodes = new HashMap<Location, Integer>();
-   }
-   
-   public Location(String name, int info)
-   {
-	   this.name = name;
-	   this.info = info;
-	   relatedNodes = new HashMap<Location, Integer>();
+	   this.place = place;
    }
    
    public String getName()
    {
-	   return this.name;
+	   return name;
+   }
+   
+   public int getNum()
+   {
+   	return num;
    }
    
    public void setName(String name)
    {
-	   this.name = name;
+   	this.name = name;
+   }
+   
+   public void setNum(int Num)
+   {
+   	this.num = num;
    }
    
    public HashMap<Location, Integer> getRelatedNodes()
    {
-	   return this.relatedNodes;
+	   return relatedNodes;
+   }
+   
+   public Location nextNode(Node other)
+   {
+   	for(Location key: relatedNodes.keySet() 
    }
    
    public int getInfo()
