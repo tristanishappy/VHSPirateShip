@@ -3,7 +3,7 @@
 public class Player {
 
 	private String name;
-	private String mood;
+	private int moral = 10;
 	private double height;
 	private String hairColor;
 	private String eyeColor;
@@ -36,5 +36,20 @@ public class Player {
 	public Location getLocation()
 	{
 		return current;
+	}
+	
+	public void setMoral(int moral)
+	{
+		this.moral = moral;
+	}
+	
+	public void upMoral()
+	{
+		moral++;
+	}
+	
+	public void downMoral()
+	{
+		moral--;
 	}
 }
