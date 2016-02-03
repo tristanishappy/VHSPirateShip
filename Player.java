@@ -23,16 +23,16 @@ public class Player {
 	{
 		health+=change;
 	}
-	
+
+	@Override
 	public String toString() {
-		return "This player is named " + name+ ".";
+		return "Player [name=" + name + ", mood=" + mood + ", height=" + height
+				+ ", hairColor=" + hairColor + ", eyeColor=" + eyeColor
+				+ ", current=" + current + ", health=" + health + "]";
 	}
 	
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
-=======
->>>>>>> parent of 9661f0b... Changed some things
 	public String where()
 	{
 		return current.toString();
@@ -42,7 +42,6 @@ public class Player {
 	{
 		return current;
 	}
-<<<<<<< HEAD
 	
 	public void setMoral(int moral)
 	{
@@ -67,6 +66,4 @@ public class Player {
 		}
 	}
 >>>>>>> origin/Player
-=======
->>>>>>> parent of 9661f0b... Changed some things
 }
