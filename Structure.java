@@ -1,18 +1,32 @@
 import java.util.*;
 public class Structure {
 	
+	/**
+	 * This variables are used by the search and traverse methods to work. 
+	 * They are not supposed to be viewed or modified by other classes or the user.
+	 */
     private static final int undiscovered = 0;
     private static final int discovered = 1;
     private static final int processed = 2;
     boolean found;
     private HashMap<Location, Integer> state;
+
+    //This stores the information of the path followed during the traverse.
     private HashMap<Location, Location> parent;
 	
+    //This is the total number of nodes of the graph, no matter if they're connected or not to other nodes.
     private int nvertices;
+    
+    //This is the list containing all the nodes. Not just a copy of the nodes, but the actual objects.
 	private ArrayList<Location> nodes;
+	
+	//This variable contains the current position of the player
 	private Location position;
 	
-	
+	/**This is the default constructor, without any parameters. 
+	 * It initialized the number of vertices to 0. 
+	 * And it creates the list of nodes plus the lists required by the traverse and search algorithms.
+	 */
 	public Structure()
 	{
 		nodes = new ArrayList<Location>();
@@ -21,6 +35,8 @@ public class Structure {
 		parent = new HashMap<Location, Location>();
 	}
 	
+	
+	//This constructor also sets the original position of the player
 	public Structure(Location originalPosition)
 	{
 		nodes = new ArrayList<Location>();
@@ -30,32 +46,46 @@ public class Structure {
 		parent = new HashMap<Location, Location>();
 	}
 	
+	//This method returns the number of nodes currently in the graph, no matter if they're connected or not.
+	//The nvertices variable could be removed and the number of vertices could be obtained from the size of the "nodes" ArrayList.
 	public int getNumberOfVertices()
 	{
 		return this.nvertices;
 	}
 	
+	/**
+	 * This method could be used to manually set the number of vertices.
+	 * Since the add and remove node methods already keep the nvertices variable updated, it is not necessary.
 	public void setNumberOfVertices(int nvertices)
 	{
 		this.nvertices = nvertices;
 	}
+	*/
 	
+	
+	//This method returns the node where the player is currently.
 	public Location getPosition()
 	{
 		return position;
 	}
 	
+	//This method changes the value of the position variable of the player
 	public void changePosition(Location next)
 	{
 		position = next;
 	}
 	
+	/**This method adds an already existing node to the list, and therefore to the structure.
+	 * It then updates the number of vertices variable.
+	 * @param node
+	 */
 	public void addNode(Location node)
 	{
 		nodes.add(node);
 		this.nvertices++;
 	}
 	
+	//This method
 	public void removeNode(Location node)
 	{
 		for(Location current: node.getRelatedNodes().keySet())
