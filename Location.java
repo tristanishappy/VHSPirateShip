@@ -13,7 +13,7 @@ public class Location
    
    public String getName()
    {
-	   return name;
+	return name;
    }
    
    public int getNum()
@@ -38,12 +38,19 @@ public class Location
    
    public Location nextNode(Node other)
    {
-   	for(Location key: relatedNodes.keySet() 
+   	int cur = other.getNum;
+   	String name = other.getName;
+   	Location 
+   	
+   	for(Location current:relatedNodes.keySet())
+   	{
+   		
+   	}
    }
    
    public int getInfo()
    {
-	   return this.info;
+	   return info;
    }
    
    public void addEdge(Location next)
@@ -69,8 +76,7 @@ public class Location
    public String toString()
    {
 	   String toReturn = "";
-	   toReturn += "This is node \"" + name + "\".\n";
-	   toReturn += "The information stored is: " + info + ".\n";
+	   toReturn += "This is node " + name;
 	   toReturn += "The adjacent nodes are:\n";
 	   for(Location current:relatedNodes.keySet())
 	   {
