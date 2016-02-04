@@ -8,7 +8,7 @@ public class Location
    public Location(String name, int num)
    {
 	   this.name = name;
-	   this.place = place;
+	   this.num = num;
    }
    
    public String getName()
