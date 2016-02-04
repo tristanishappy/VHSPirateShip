@@ -3,54 +3,75 @@ public class Location
 {
    private String name;
    private HashMap<Location, Integer> relatedNodes;
-   private int num;
+   //Info tells size, and three events (ex. island, hurricane, port)
+   private int info = 000;
+   private int event1;
+   private int event2;
+   private int event3;
    
-   public Location(String name, int num)
+   public void setInfo(int info)
+   {
+   	this.info = info;
+   	event1 = info.charAt(0);
+   	event2 = info.charAt(1);
+   	event3 = info.charAt(2);
+   }
+   
+   public void setEvent(int eventNum, int set)
+   {
+   	if(eventNum == 1)
+   	{
+   		event1 = set;
+   		int newInfo = set + (info.charAt(1)*10) + (info.charAt(2)*100);
+   		info = newInfo;
+   	}
+   	
+   	if(eventNum == 2)
+   	{
+   		event2 = set;
+   		int newInfo = info.charAt(0) + (set*10) + (info.charAt(2)*100);
+   		info = newInfo;
+   	}
+   	
+   	if(eventNum == 3)
+   	{
+   		event3 = set;
+   		int newInfo = info.charAt(0) + (info.charAt(1)*10) + (set*100);
+   		info = newInfo;
+   	}
+   }
+   
+   public Location(String name)
    {
 	   this.name = name;
-	   this.num = num;
+	   relatedNodes = new HashMap<Location, Integer>();
+   }
+   
+   public Location(String name, int info)
+   {
+	   this.name = name;
+	   this.info = info;
+	   relatedNodes = new HashMap<Location, Integer>();
    }
    
    public String getName()
    {
-	return name;
-   }
-   
-   public int getNum()
-   {
-   	return num;
+	   return this.name;
    }
    
    public void setName(String name)
    {
-   	this.name = name;
-   }
-   
-   public void setNum(int Num)
-   {
-   	this.num = num;
+	   this.name = name;
    }
    
    public HashMap<Location, Integer> getRelatedNodes()
    {
-	   return relatedNodes;
-   }
-   
-   public Location nextNode(Node other)
-   {
-   	int cur = other.getNum;
-   	String name = other.getName;
-   	Location 
-   	
-   	for(Location current:relatedNodes.keySet())
-   	{
-   		
-   	}
+	   return this.relatedNodes;
    }
    
    public int getInfo()
    {
-	   return info;
+	   return this.info;
    }
    
    public void addEdge(Location next)
@@ -76,7 +97,8 @@ public class Location
    public String toString()
    {
 	   String toReturn = "";
-	   toReturn += "This is node " + name;
+	   toReturn += "This is node \"" + name + "\".\n";
+	   toReturn += "The information stored is: " + info + ".\n";
 	   toReturn += "The adjacent nodes are:\n";
 	   for(Location current:relatedNodes.keySet())
 	   {
