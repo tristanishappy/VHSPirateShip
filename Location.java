@@ -5,9 +5,9 @@ public class Location
    private HashMap<Location, Integer> relatedNodes;
    //Info tells size, and three events (ex. island, hurricane, port)
    private int info = 000;
-   private int event1;
-   private int event2;
-   private int event3;
+   private int event1 = 0;
+   private int event2 = 0;
+   private int event3 = 0;
    
    public void setInfo(int info)
    {
