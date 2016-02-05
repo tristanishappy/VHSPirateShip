@@ -3,42 +3,12 @@ public class Location
 {
    private String name;
    private HashMap<Location, Integer> relatedNodes;
-   //Info tells size, and three events (ex. island, hurricane, port)
-   private int info = 000;
-   private int event1 = 0;
-   private int event2 = 0;
-   private int event3 = 0;
+   private ArrayList<Events> eventStack;
+   private int size;
    
-   public void setInfo(int info)
+   public void setSize(int size)
    {
-   	this.info = info;
-   	event1 = info.charAt(0);
-   	event2 = info.charAt(1);
-   	event3 = info.charAt(2);
-   }
-   
-   public void setEvent(int eventNum, int set)
-   {
-   	if(eventNum == 1)
-   	{
-   		event1 = set;
-   		int newInfo = set + (info.charAt(1)*10) + (info.charAt(2)*100);
-   		info = newInfo;
-   	}
-   	
-   	if(eventNum == 2)
-   	{
-   		event2 = set;
-   		int newInfo = info.charAt(0) + (set*10) + (info.charAt(2)*100);
-   		info = newInfo;
-   	}
-   	
-   	if(eventNum == 3)
-   	{
-   		event3 = set;
-   		int newInfo = info.charAt(0) + (info.charAt(1)*10) + (set*100);
-   		info = newInfo;
-   	}
+   	this.size = size;
    }
    
    public Location(String name)
@@ -47,10 +17,10 @@ public class Location
 	   relatedNodes = new HashMap<Location, Integer>();
    }
    
-   public Location(String name, int info)
+   public Location(String name, int size)
    {
 	   this.name = name;
-	   this.info = info;
+	   this.size = size;
 	   relatedNodes = new HashMap<Location, Integer>();
    }
    
@@ -69,9 +39,9 @@ public class Location
 	   return this.relatedNodes;
    }
    
-   public int getInfo()
+   public int getsize()
    {
-	   return this.info;
+	   return this.size;
    }
    
    public void addEdge(Location next)
@@ -91,14 +61,14 @@ public class Location
    
    public boolean equals(Location other)
    {
-	   return this.name == other.name && this.info == other.info && this.relatedNodes == other.relatedNodes;
+	   return this.name == other.name && this.size == other.size && this.relatedNodes == other.relatedNodes;
    }
    
    public String toString()
    {
 	   String toReturn = "";
 	   toReturn += "This is node \"" + name + "\".\n";
-	   toReturn += "The information stored is: " + info + ".\n";
+	   toReturn += "The sizermation stored is: " + size + ".\n";
 	   toReturn += "The adjacent nodes are:\n";
 	   for(Location current:relatedNodes.keySet())
 	   {
