@@ -39,9 +39,9 @@ public class Location
 	   return this.relatedNodes;
    }
    
-   public int getsize()
+   public int getSize()
    {
-	   return this.size;
+	   return size;
    }
    
    public void addEdge(Location next)
