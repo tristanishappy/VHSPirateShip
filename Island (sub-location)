@@ -1,0 +1,11 @@
+public class Island
+{
+  private String name;
+  private int size;
+
+  public Island(String name, int size)
+  {
+  
+  }
+  
+}
