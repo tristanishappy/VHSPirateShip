@@ -55,6 +55,16 @@ public class Location
 	   return size;
    }
    
+   public void addEvent(Event other)
+   {
+   	eventStack.add(other);
+   }
+   
+   public void removeEvent(int index)
+   {
+   	eventStack.remove(index);
+   }
+   
    // Adds location to Hashmap of travelable nodes
    public void addEdge(Location next)
    {
