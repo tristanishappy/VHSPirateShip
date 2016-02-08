@@ -1,11 +1,29 @@
+import java.util.*;
+
 public class Island
 {
-  private String name;
-  private int size;
+  private Location location;
+  private Item ground;
 
   public Island(String name, int size)
   {
+    Location location = new Location(name, size);
+    this.location = location;
+  }
   
+  public Location getLocation()
+  {
+    return location;
+  }
+  
+  public void setGround(Item ground)
+  {
+    this.ground = ground;
+  }
+  
+  public void dig(Player player)
+  {
+    player.addInventory(ground);
   }
   
 }
