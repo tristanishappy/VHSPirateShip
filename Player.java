@@ -71,13 +71,13 @@ public class Player
 	
 	public String moralToString()
 	{
-		if(moral>=8)
+		if(moral>=7)
 			return "Moral is high!";
 		
-		if(moral<8 && moral>=5)
+		if(moral<7 && moral>=4)
 			return "Moral is okay.";
 		
-		if(moral<5)
+		if(moral<4)
 			return "Moral is low :(";
 	}
 }
