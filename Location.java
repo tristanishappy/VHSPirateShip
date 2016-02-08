@@ -9,6 +9,8 @@ public class Location
    private ArrayList<Events> eventStack;
    // Number of events/structures within location
    private int size;
+   // Tells if player is in location
+   private boolean occupied;
    
    //Sets size
    public void setSize(int size)
@@ -55,14 +57,26 @@ public class Location
 	   return size;
    }
    
+   // Adds event to list of events
    public void addEvent(Event other)
    {
    	eventStack.add(other);
    }
    
+   // Removes event from list of events
    public void removeEvent(int index)
    {
    	eventStack.remove(index);
+   }
+   
+   public void enter()
+   {
+   	occupied = true;
+   }
+   
+   public void leave()
+   {
+   	occupied = false;
    }
    
    // Adds location to Hashmap of travelable nodes
@@ -96,6 +110,12 @@ public class Location
 	   toReturn += "This is node \"" + name + "\".\n";
 	   toReturn += "The sizermation stored is: " + size + ".\n";
 	   toReturn += "The adjacent nodes are:\n";
+	   
+	   if(occupied)
+	   	toReturn += "And is occupied.";
+	   else
+	   	toReturn += "And is not occupied.";
+	   
 	   for(Location current:relatedNodes.keySet())
 	   {
 		   toReturn += "- Node \""+ current.getName() + "\" at a distance: " + relatedNodes.get(current) + "\n";
