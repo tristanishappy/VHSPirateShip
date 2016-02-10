@@ -8,7 +8,7 @@ public class Location
    // Events occuring within location
    private ArrayList<Events> eventStack;
    // Number of events/structures within location
-   private int size;
+   private int size = 0;
    // Tells if player is in location
    private boolean occupied;
    
@@ -61,12 +61,14 @@ public class Location
    public void addEvent(Event other)
    {
    	eventStack.add(other);
+   	size++;
    }
    
    // Removes event from list of events
    public void removeEvent(int index)
    {
    	eventStack.remove(index);
+   	size++;
    }
    
    public void enter()
