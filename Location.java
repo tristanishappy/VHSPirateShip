@@ -4,7 +4,7 @@ public class Location
    // Name of location
    private String name;
    // Directory of travelable nodes
-   private HashMap<Location, Integer> relatedNodes;
+   private ArrayList<Location> relatedNodes;
    // Events occuring within location
    private ArrayList<Events> eventStack;
    // Number of events/structures within location
@@ -22,7 +22,7 @@ public class Location
    public Location(String name)
    {
 	   this.name = name;
-	   relatedNodes = new HashMap<Location, Integer>();
+	   relatedNodes = new ArrayList<Location>();
    }
    
    // Constructor: makes new location with size
@@ -30,7 +30,7 @@ public class Location
    {
 	   this.name = name;
 	   this.size = size;
-	   relatedNodes = new HashMap<Location, Integer>();
+	   relatedNodes = new ArrayList<Location>();
    }
    
    // Returns name
@@ -46,7 +46,7 @@ public class Location
    }
    
    // Returns Hashmap of travelable nodes
-   public HashMap<Location, Integer> getRelatedNodes()
+   public ArrayList<Location> getRelatedNodes()
    {
 	   return this.relatedNodes;
    }
@@ -84,13 +84,7 @@ public class Location
    // Adds location to Hashmap of travelable nodes
    public void addEdge(Location next)
    {
-	   relatedNodes.put(next, 0);
-   }
-   
-   // Adds location at distance to Hashmap of travelable nodes
-   public void addEdge(Location next, int distance)
-   {
-	   relatedNodes.put(next, distance);
+	   relatedNodes.add(next);
    }
    
    // Removes location from list of travelable nodes
@@ -110,17 +104,12 @@ public class Location
    {
 	   String toReturn = "";
 	   toReturn += "This is node \"" + name + "\".\n";
-	   toReturn += "The sizermation stored is: " + size + ".\n";
+	   toReturn += "There are " + size + " events and/or structures" + ".\n";
 	   toReturn += "The adjacent nodes are:\n";
 	   
-	   if(occupied)
-	   	toReturn += "And is occupied.";
-	   else
-	   	toReturn += "And is not occupied.";
-	   
-	   for(Location current:relatedNodes.keySet())
+	   for(int i=0; i<relatedNodes.size(); i++)
 	   {
-		   toReturn += "- Node \""+ current.getName() + "\" at a distance: " + relatedNodes.get(current) + "\n";
+		   toReturn += "- Node \""+ relatedNodes[i].getName();
 	   }
 	   
 	   return toReturn;
