@@ -11,6 +11,8 @@ public class Location
    private int size = 0;
    // Tells if player is in location
    private boolean occupied;
+   // Summary of location
+   private String summary;
    
    //Sets size
    public void setSize(int size)
@@ -43,6 +45,18 @@ public class Location
    public void setName(String name)
    {
 	   this.name = name;
+   }
+   
+   // Returns summary
+   public String getSummary()
+   {
+   	return summary;
+   }
+   
+   // Sets summary
+   public void setSummary(String summary)
+   {
+   	this.summary = summary;
    }
    
    // Returns Hashmap of travelable nodes
@@ -103,13 +117,14 @@ public class Location
    public String toString()
    {
 	   String toReturn = "";
-	   toReturn += "This is node \"" + name + "\".\n";
-	   toReturn += "There are " + size + " events and/or structures" + ".\n";
-	   toReturn += "The adjacent nodes are:\n";
+	   toReturn += "This is node \"" + name + "\n";
+	   toReturn += "Summary: " + summary + "\n";
+	   toReturn += "There are " + size + " events and/or structures." + "\n";
+	   toReturn += "The adjacent nodes are: " + "\n";
 	   
 	   for(int i=0; i<relatedNodes.size(); i++)
 	   {
-		   toReturn += "- Node \""+ relatedNodes[i].getName();
+		   toReturn += "- Node: " + "\n" + relatedNodes[i].getName();
 	   }
 	   
 	   return toReturn;
