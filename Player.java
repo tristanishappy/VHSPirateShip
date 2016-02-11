@@ -2,12 +2,9 @@ import java.util.*;
 
 public class Player 
 {
-
 	private String name;
 	private int moral = 10;
-	private double height;
-	private String hairColor;
-	private String eyeColor;
+	private ArrayList<Item> inventory;
 
 	private Location current;
 	private double health = 100.00;
@@ -15,6 +12,46 @@ public class Player
 	public Player(String name) 
 	{
 		this.name  = name;
+		inventory = new ArrayList<Item>;
+	}
+	
+	@Override
+	public String toString() 
+	{
+		return "Player - [Name: " + name + "\n" 
+		+ "Moral: " + moralToString() + "\n"
+		+ "Location: " + current.getName() + "\n"
+		+ "Health: " + health + " ]";
+	}
+	
+	public void addItem(Item other)
+	{
+		inventory.add(other);
+	}
+	
+	public void removeItem(int index)
+	{
+		inventory.remove(index);
+	}
+	
+	public void dumpInventory()
+	{
+		inventory.clear();
+	}
+	
+	public String inventoryToString()
+	{
+		String toReturn;
+		
+		for(Item n: inventory)
+			toReturn += n.getName() + "\n";
+			
+		return toReturn;
+	}
+	
+	public ArrayList getInventory()
+	{
+		return inventory;
 	}
 
 	public void changeLocation(Location next) 
@@ -27,13 +64,6 @@ public class Player
 	public void changeHealth(double change)
 	{
 		health+=change;
-	}
-
-	@Override
-	public String toString() {
-		return "Player [name=" + name + ", mood=" + mood + ", height=" + height
-				+ ", hairColor=" + hairColor + ", eyeColor=" + eyeColor
-				+ ", current=" + current + ", health=" + health + "]";
 	}
 	
 	public String where()
@@ -80,4 +110,5 @@ public class Player
 		if(moral<4)
 			return "Moral is low :(";
 	}
+	
 }
