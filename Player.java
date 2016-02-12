@@ -4,15 +4,15 @@ public class Player
 {
 	private String name;
 	private int moral = 10;
-	private ArrayList<Item> inventory;
-
+	private Hashmap<Item, int> inventory;
+	private double carryWeight = 0.0;
 	private Location current;
 	private double health = 100.00;
 	
 	public Player(String name) 
 	{
 		this.name  = name;
-		inventory = new ArrayList<Item>;
+		inventory = new Hashmap<Item, int>();
 	}
 	
 	public String toString() 
@@ -23,27 +23,47 @@ public class Player
 		+ "Health: " + health + " ]";
 	}
 	
-	public void addItem(Item other)
+	public void addItem(Item other, int quan)
 	{
-		inventory.add(other);
+		inventory.put(other, quan);
+		
+		for(int i=0; i<quan; i++)
+			carryWeight += other.getWeight();
 	}
 	
-	public void removeItem(int index)
+	public void removeItem(Item other)
 	{
-		inventory.remove(index);
+		int cur = inventory.get(other);
+		
+		inventory.remove(other);
+		
+		for(int i=0; i<cur; i++)
+			carryWeight -= other.getWeight();
+	}
+	
+	public void removeItem(Item other, int quan)
+	{
+		int cur = inventory.get(other);
+		
+		inventory.remove(other);
+		inventory.put(other, quan);
+		
+		for(int i=0; i<quan; i++)
+			carryWeight -= other.getWeight();
 	}
 	
 	public void dumpInventory()
 	{
 		inventory.clear();
+		carryWeight = 0.0;
 	}
 	
 	public String inventoryToString()
 	{
 		String toReturn;
 		
-		for(Item n: inventory)
-			toReturn += n.getName() + "\n";
+		for(Item n: inventory.keySet())
+			toReturn += "Item: " + n.getName() + "Quantity: " + inventory.get(n) + "\n";
 			
 		return toReturn;
 	}
@@ -62,7 +82,7 @@ public class Player
 	
 	public void changeHealth(double change)
 	{
-		health+=change;
+		health += change;
 	}
 	
 	public String where()
