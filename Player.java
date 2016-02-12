@@ -15,7 +15,6 @@ public class Player
 		inventory = new ArrayList<Item>;
 	}
 	
-	@Override
 	public String toString() 
 	{
 		return "Player - [Name: " + name + "\n" 
