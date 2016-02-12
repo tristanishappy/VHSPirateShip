@@ -3,60 +3,53 @@ public class Item {
 	//Initializing the item variables
 	private String name;
 	private String description;
-	private int quantity;
-	private int weight;
+	private double weight;
 
 	/**
 	 * Constructor for an Item.
 	 * @param name
 	 * @param description
-	 * @param quantity
 	 * @param weight
 	 */
-	public Item(String name, String description, int quantity, int weight) {
+	public Item(String name, String description, int weight) {
 		this.name = name; 
-		this.quantity = quantity;
 		this.description = description;
 		this.weight = weight;
 	}
-	
-	//Method returning the Quantity of the item.
-	public int getQuantity() {
-		return quantity;
+
+	// Sets description
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	//Method returning the Description of the item.
+	// Method returning the Description of the item.
 	public String getDescription() {
 		return description;
 	}
 
-	//Method returning the Name of the item.
+	// Sets name
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	// Method returning the Name of the item.
 	public String getName() {
 		return name;
 	}
-
-	//Method returning the Weight of the item.
+	
+	// Sets weight of item
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+	
+	// Method returning the Weight of the item.
 	public int getWeight() {
 		return weight;
 	}
 	
-	//Method subtracting the amount of the item used from the quantity.
-	public void useItem(int x) {
-		quantity = quantity - x;
-	}
-
-	//Method adding x amount to the quantity
-	public void addItem(int x) {
-		quantity = quantity + x;
+	// Removes item at index from player inventory.
+	public void useItem(Item item, Player other, int quantity) {
+		other.removeItem(item, quantity);
 	}
 	
-	//Method setting the quantity to the value of x. 
-	public void setItemQuantity(int x) {
-		quantity = x;
-	}
-	
-	//Method returning the total weight of an item type.
-	public int totalWeight() {
-		return weight*quantity;
-	}
 }
