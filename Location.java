@@ -6,7 +6,7 @@ public class Location
    // Directory of travelable nodes
    private ArrayList<Location> relatedNodes;
    // Events occuring within location
-   private ArrayList<Events> eventStack;
+   private ArrayList<Event> eventStack;
    // Number of events/structures within location
    private int size = 0;
    // Tells if player is in location
@@ -25,6 +25,7 @@ public class Location
    {
 	   this.name = name;
 	   relatedNodes = new ArrayList<Location>();
+	   eventStack = new ArrayList<Event>();
    }
    
    // Constructor: makes new location with size
@@ -33,6 +34,7 @@ public class Location
 	   this.name = name;
 	   this.size = size;
 	   relatedNodes = new ArrayList<Location>();
+	   eventStack = new ArrayList<Event>();
    }
    
    // Returns name
@@ -82,7 +84,7 @@ public class Location
    public void removeEvent(int index)
    {
    	eventStack.remove(index);
-   	size++;
+   	size--;
    }
    
    public void enter()
@@ -117,14 +119,14 @@ public class Location
    public String toString()
    {
 	   String toReturn = "";
-	   toReturn += "This is node \"" + name + "\n";
+	   toReturn += "This is node: " + name + "\n";
 	   toReturn += "Summary: " + summary + "\n";
 	   toReturn += "There are " + size + " events and/or structures." + "\n";
 	   toReturn += "The adjacent nodes are: " + "\n";
 	   
 	   for(int i=0; i<relatedNodes.size(); i++)
 	   {
-		   toReturn += "- Node: " + "\n" + relatedNodes[i].getName();
+		   toReturn += "- Node: " + relatedNodes[i].getName() + "\n";
 	   }
 	   
 	   return toReturn;
