@@ -1,3 +1,5 @@
+package src.main;
+
 //WARNING: UNTESTED CLASS! TEST BEFORE MERGING! (I couldn't test it at the time that I made it.)
 
 import java.util.*;

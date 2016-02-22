@@ -1,3 +1,5 @@
+package src.main;
+
 
 public class Item {
 	//Initializing the item variables
