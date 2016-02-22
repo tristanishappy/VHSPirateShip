@@ -18,19 +18,19 @@ public class Main {
 		prova.createNode("k", 35);
 		prova.createNode("l", 98);
 		prova.createNode("m", 36);
-		prova.addEdge(prova.getPointer("a"), prova.getPointer("e"), 5);
-		prova.addEdge(prova.getPointer("h"), prova.getPointer("i"), 9);
-		prova.addEdge(prova.getPointer("i"), prova.getPointer("l"), 14);
-		prova.addEdge(prova.getPointer("j"), prova.getPointer("i"), 50);
-		prova.addEdge(prova.getPointer("j"), prova.getPointer("k"), 35);
-		prova.addEdge(prova.getPointer("k"), prova.getPointer("l"), 8);
-		prova.addEdge(prova.getPointer("f"), prova.getPointer("j"), 23);
-		prova.addEdge(prova.getPointer("e"), prova.getPointer("f"), 11);
-		prova.addEdge(prova.getPointer("f"), prova.getPointer("g"), 98);
-		prova.addEdge(prova.getPointer("c"), prova.getPointer("g"), 24);
-		prova.addEdge(prova.getPointer("b"), prova.getPointer("e"), 76);
-		prova.addEdge(prova.getPointer("b"), prova.getPointer("c"), 23);
-		prova.addEdge(prova.getPointer("c"), prova.getPointer("d"), 16);
+		prova.createRoute(prova.getPointer("a"), prova.getPointer("e"), 5);
+		prova.createRoute(prova.getPointer("h"), prova.getPointer("i"), 9);
+		prova.createRoute(prova.getPointer("i"), prova.getPointer("l"), 14);
+		prova.createRoute(prova.getPointer("j"), prova.getPointer("i"), 50);
+		prova.createRoute(prova.getPointer("j"), prova.getPointer("k"), 35);
+		prova.createRoute(prova.getPointer("k"), prova.getPointer("l"), 8);
+		prova.createRoute(prova.getPointer("f"), prova.getPointer("j"), 23);
+		prova.createRoute(prova.getPointer("e"), prova.getPointer("f"), 11);
+		prova.createRoute(prova.getPointer("f"), prova.getPointer("g"), 98);
+		prova.createRoute(prova.getPointer("c"), prova.getPointer("g"), 24);
+		prova.createRoute(prova.getPointer("b"), prova.getPointer("e"), 76);
+		prova.createRoute(prova.getPointer("b"), prova.getPointer("c"), 23);
+		prova.createRoute(prova.getPointer("c"), prova.getPointer("d"), 16);
 		/*
 		prova.changePosition(prova.getPointer("c"));
 		
@@ -48,8 +48,8 @@ public class Main {
 		
 		System.out.println(prova.findShortestPath(prova.getPointer("a"), prova.getPointer("k")));
 		
-		prova.removeNode(prova.getPointer("a"));
-		prova.removeEdge(prova.getPointer("a"), prova.getPointer("e"));
+		//prova.removeNode(prova.getPointer("a"));
+		//prova.removeEdge(prova.getPointer("a"), prova.getPointer("e"));
 		
 		System.out.println(prova.findShortestPath(prova.getPointer("a"), prova.getPointer("k")));
 

@@ -56,7 +56,7 @@ public class Structure {
 		this.nvertices++;
 	}
 	
-	public void removeNode(Location node)
+	/*public void removeNode(Location node)
 	{
 		for(Location current: node.getRelatedNodes().keySet())
 		{
@@ -75,7 +75,7 @@ public class Structure {
 		}
 		
 	}
-	
+	*/
 	public void createNode(String name)
 	{
 		nodes.add(new Location(name));
@@ -88,16 +88,16 @@ public class Structure {
 		this.nvertices++;
 	}
 	
-	public void addEdge(Location x, Location y, int distance)
+	public void createRoute(Location x, Location y, int distance)
 	{
-		x.addEdge(y, distance);
-		y.addEdge(x, distance);
+		x.createRoute(y, distance);
+		y.createRoute(x, distance);
 	}
 	
-	public void addEdge(Location x, Location y)
+	public void createRoute(Location x, Location y)
 	{
-		x.addEdge(y, 0);
-		y.addEdge(x, 0);
+		x.createRoute(y, 0);
+		y.createRoute(x, 0);
 	}
 	
 	public Location getPointer(String name)
@@ -146,11 +146,11 @@ public class Structure {
 		{
 			found = true;
 		}
-		for(Location v: current.getRelatedNodes().keySet())
+		for(Route v:current.getRelatedRoutes())
 		{
-			if(state.get(v) == undiscovered)
+			if(state.get(v.getTo()) == undiscovered)
 			{
-				dfs(v, searched);
+				dfs(v.getTo(), searched);
 			}
 		}
 		state.remove(current);
@@ -167,41 +167,41 @@ public class Structure {
 		return found;
 	}
 	
-	public int dijkstra(Location start, Location end)
+	public double dijkstra(Location start, Location end)
 	{
 		HashMap<Location, Boolean> intree = new HashMap<Location, Boolean>();
-		HashMap<Location, Integer> distance = new HashMap<Location, Integer>();
+		HashMap<Location, Double> distance = new HashMap<Location, Double>();
 		Location v;
-		int weight;
-		int dist;
+		double weight;
+		double dist;
 		
 		for(Location node:nodes)
 		{
 			intree.put(node, false);
-			distance.put(node, Integer.MAX_VALUE);
+			distance.put(node, Double.MAX_VALUE);
 			
 		}
 		distance.remove(start);
-		distance.put(start, 0);
+		distance.put(start, 0.0);
 		v = start;
 		
 		while(intree.get(v) == false)
 		{
 			intree.remove(v);
 			intree.put(v, true);
-			for(Location w: v.getRelatedNodes().keySet())
+			for(Route w:v.getRelatedRoutes())
 			{
-				weight = v.getRelatedNodes().get(w);
-				if(distance.get(w) > ((distance.get(v))+weight))
+				weight = w.getDistance();
+				if(distance.get(w.getTo()) > ((distance.get(v))+weight))
 				{
-					distance.remove(w);
-					distance.put(w, (distance.get(v)+weight));
+					distance.remove(w.getTo());
+					distance.put(w.getTo(), (distance.get(v)+weight));
 				}
 			}
 			
 			v = getPointer("a");
-			dist = Integer.MAX_VALUE;
-			for(Location current: nodes)
+			dist = Double.MAX_VALUE;
+			for(Location current:nodes)
 			{
 				if((intree.get(current)==false) && (dist>distance.get(current)))
 				{
@@ -215,7 +215,7 @@ public class Structure {
 	}
 
 	
-	public int findShortestPath(Location x, Location y)
+	public double findShortestPath(Location x, Location y)
 	{
 		initializeSearch();
 		if(isReachable(x,y))

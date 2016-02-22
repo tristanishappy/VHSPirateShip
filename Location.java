@@ -2,20 +2,20 @@ import java.util.*;
 public class Location
 {
    private String name;
-   private HashMap<Location, Integer> relatedNodes;
+   private ArrayList<Route> relatedRoutes;
    private int info;
    
    public Location(String name)
    {
 	   this.name = name;
-	   relatedNodes = new HashMap<Location, Integer>();
+	   relatedRoutes = new ArrayList<Route>();
    }
    
    public Location(String name, int info)
    {
 	   this.name = name;
 	   this.info = info;
-	   relatedNodes = new HashMap<Location, Integer>();
+	   relatedRoutes = new ArrayList<Route>();
    }
    
    public String getName()
@@ -28,9 +28,9 @@ public class Location
 	   this.name = name;
    }
    
-   public HashMap<Location, Integer> getRelatedNodes()
+   public ArrayList<Route> getRelatedRoutes()
    {
-	   return this.relatedNodes;
+	   return this.relatedRoutes;
    }
    
    public int getInfo()
@@ -38,24 +38,24 @@ public class Location
 	   return this.info;
    }
    
-   public void addEdge(Location next)
+   public void createRoute(Location next)
    {
-	   relatedNodes.put(next, 0);
+	   relatedRoutes.add(new Route(next, 0.0));
    }
    
-   public void addEdge(Location next, int distance)
+   public void createRoute(Location next, double distance)
    {
-	   relatedNodes.put(next, distance);
+	   relatedRoutes.add(new Route(next, distance));
    }
    
    public void removeEdge(Location next)
    {
-	   relatedNodes.remove(next);
+	   relatedRoutes.remove(next);
    }
    
    public boolean equals(Location other)
    {
-	   return this.name == other.name && this.info == other.info && this.relatedNodes == other.relatedNodes;
+	   return this.name == other.name && this.info == other.info && this.relatedRoutes == other.relatedRoutes;
    }
    
    public String toString()
@@ -64,9 +64,9 @@ public class Location
 	   toReturn += "This is node \"" + name + "\".\n";
 	   toReturn += "The information stored is: " + info + ".\n";
 	   toReturn += "The adjacent nodes are:\n";
-	   for(Location current:relatedNodes.keySet())
+	   for(Route current:relatedRoutes)
 	   {
-		   toReturn += "- Node \""+ current.getName() + "\" at a distance: " + relatedNodes.get(current) + "\n";
+		   toReturn += "- Node \""+ current.getTo().getName() + "\" at a distance: " + current.getDistance() + "\n";
 	   }
 	   
 	   return toReturn;

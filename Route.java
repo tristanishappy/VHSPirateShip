@@ -11,7 +11,7 @@ public class Route
   */
   
   //Will Compass directions be relevent in this game?
-  private String name;
+  //private String name;
   private double distance; //Location where you can see the route to
   private Location to; // the place where you can or can't go
   public int safty; //How likely you are to make it through unharmed, 0 means safest 100 means not traversable.
