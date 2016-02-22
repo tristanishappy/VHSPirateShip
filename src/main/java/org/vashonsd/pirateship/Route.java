@@ -1,4 +1,4 @@
-package src.main;
+package org.vashonsd.pirateship;
 
 //WARNING: UNTESTED CLASS! TEST BEFORE MERGING! (I couldn't test it at the time that I made it.)
 
